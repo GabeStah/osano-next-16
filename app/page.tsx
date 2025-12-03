@@ -1,9 +1,9 @@
 export default function Home() {
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-4">Osano Next.js 16 Test Suite</h1>
+      <h1 className="text-3xl font-bold mb-4">Osano Next.js 15 Test Suite</h1>
       <p className="text-gray-600 mb-6">
-        This is a test application for verifying Osano cookie consent integration with Next.js 16.
+        This is a test application for verifying Osano cookie consent integration with Next.js 15.
       </p>
       <div className="bg-gray-100 p-4 rounded">
         <h2 className="text-lg font-semibold mb-2">Test Pages</h2>

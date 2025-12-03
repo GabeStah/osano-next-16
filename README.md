@@ -1,6 +1,6 @@
-# Osano Next.js 16 Test Suite
+# Osano Next.js 15 Test Suite
 
-A test application for verifying Osano cookie consent integration with Next.js 16.
+A test application for verifying Osano cookie consent integration with Next.js 15.
 
 ## Purpose
 
