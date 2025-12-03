@@ -2,6 +2,8 @@
 
 A test application for verifying Osano cookie consent integration with Next.js 16.
 
+> Check out the Next.js 15 [branch](https://github.com/GabeStah/osano-next-16/tree/next-15) and [deployment](https://osano-next-16-git-next-15-gabewyatt-9077s-projects.vercel.app/) for a fully-functional example.
+
 ## Purpose
 
 This repo provides a simple Next.js 16 application to test Osano's cookie consent banner behavior across different component types and navigation patterns:
