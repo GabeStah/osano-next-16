@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Osano Next.js 16 Test Suite
+
+A test application for verifying Osano cookie consent integration with Next.js 16.
+
+## Purpose
+
+This repo provides a simple Next.js 16 application to test Osano's cookie consent banner behavior across different component types and navigation patterns:
+
+- **Client Components** - React components with `"use client"` directive
+- **Server Components** - Server-rendered components with async data fetching
+- **Navigation Types** - Compare behavior between Next.js `<Link>` (with various prefetch settings) and traditional `<a>` tags
+
+## Configuration
+
+### Environment Variable
+
+Set the `NEXT_PUBLIC_COOKIE_SCRIPT` environment variable to your Osano script URL.
+
+#### Local Development
+
+Create a `.env.local` file in the project root:
+
+```env
+NEXT_PUBLIC_COOKIE_SCRIPT=https://cmp.osano.com/your-customer-id/your-config-id/osano.js
+```
+
+#### Vercel Deployment
+
+Add the environment variable in your Vercel project settings:
+
+1. Go to your project in the Vercel dashboard
+2. Navigate to **Settings** → **Environment Variables**
+3. Add a new variable:
+   - **Name:** `NEXT_PUBLIC_COOKIE_SCRIPT`
+   - **Value:** Your Osano script URL (e.g., `https://cmp.osano.com/your-customer-id/your-config-id/osano.js`)
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Set up your environment variable (see Configuration above)
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Test Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` - Home page with test suite overview
+- `/client-component` - Client-side React component example
+- `/server-component` - Server-rendered component example
 
-## Learn More
+## Navigation Testing
 
-To learn more about Next.js, take a look at the following resources:
+The sidebar provides multiple navigation methods to test Osano behavior:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Navigation Type     | Description                                   |
+| ------------------- | --------------------------------------------- |
+| Link (default)      | Next.js Link with default prefetch behavior   |
+| Link prefetch=true  | Eagerly prefetches the page on viewport entry |
+| Link prefetch=false | No prefetching, client-side navigation only   |
+| `<a>` tag           | Full page reload (traditional navigation)     |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use browser DevTools Network tab to observe prefetching behavior and cookie consent script loading across different navigation types.
