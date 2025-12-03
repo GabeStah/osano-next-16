@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,60 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {process.env.NEXT_PUBLIC_COOKIE_SCRIPT && (
+          <Script
+            id="cookie-banner"
+            src={process.env.NEXT_PUBLIC_COOKIE_SCRIPT}
+          />
+        )}
+        <div className="flex min-h-screen">
+          <nav className="w-64 p-4 border-r flex flex-col gap-2 shrink-0">
+            <Link href="/" className="text-blue-600 hover:underline">
+              Home (Link)
+            </Link>
+
+            <div className="mt-4 mb-1 text-xs font-semibold text-gray-500 uppercase">
+              Link (default prefetch)
+            </div>
+            <Link href="/client-component" className="text-blue-600 hover:underline">
+              Client Component
+            </Link>
+            <Link href="/server-component" className="text-blue-600 hover:underline">
+              Server Component
+            </Link>
+
+            <div className="mt-4 mb-1 text-xs font-semibold text-gray-500 uppercase">
+              Link (prefetch=true)
+            </div>
+            <Link href="/client-component" prefetch={true} className="text-blue-600 hover:underline">
+              Client Component
+            </Link>
+            <Link href="/server-component" prefetch={true} className="text-blue-600 hover:underline">
+              Server Component 
+            </Link>
+
+            <div className="mt-4 mb-1 text-xs font-semibold text-gray-500 uppercase">
+              Link (prefetch=false)
+            </div>
+            <Link href="/client-component" prefetch={false} className="text-blue-600 hover:underline">
+              Client Component
+            </Link>
+            <Link href="/server-component" prefetch={false} className="text-blue-600 hover:underline">
+              Server Component
+            </Link>
+
+            <div className="mt-4 mb-1 text-xs font-semibold text-gray-500 uppercase">
+              Plain &lt;a&gt; tag
+            </div>
+            <a href="/client-component" className="text-blue-600 hover:underline">
+              Client Component
+            </a>
+            <a href="/server-component" className="text-blue-600 hover:underline">
+              Server Component
+            </a>
+          </nav>
+          <main className="flex-1">{children}</main>
+        </div>
       </body>
     </html>
   );
