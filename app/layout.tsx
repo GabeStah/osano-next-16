@@ -29,10 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {process.env.NEXT_PUBLIC_COOKIE_SCRIPT && (
+        {process.env.NEXT_PUBLIC_COOKIE_SCRIPT_TEST && (
           <Script
             id="cookie-banner"
-            src={process.env.NEXT_PUBLIC_COOKIE_SCRIPT}
+            src={process.env. NEXT_PUBLIC_COOKIE_SCRIPT_TEST}
           />
         )}
         <div className="flex min-h-screen">
